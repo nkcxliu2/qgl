@@ -43,7 +43,44 @@ TDG, also known as the inverse of the T gate, involves a complex phase adjustmen
 ```math
 TDG = \begin{bmatrix} 1 & 0 \\ 0 & \frac{\sqrt{2}}{2} - i\frac{\sqrt{2}}{2} \end{bmatrix}
 ```
+#### RX Gate 
+The RX gate performs a rotation around the X axis by an angle ($\theta$). 
+```math
+RX(\theta) = \begin{bmatrix} \cos(\theta/2) & -i\sin(\theta/2) \\ -i\sin(\theta/2) & \cos(\theta/2) \end{bmatrix}
+```
+#### RY Gate
+The RY gate performs a rotation around the Y axis by an angle $\theta$. 
+```math
+RY(\theta)= \begin{bmatrix} \cos(\theta/2) & -\sin(\theta/2) \\ \sin(\theta/2) & \cos(\theta/2) \end{bmatrix}
+```
+#### RZ Gate 
+The RZ gate performs a rotation around the Z axis by an angle $\theta$.
+```math
+RZ(\theta) = \begin{bmatrix} \cos(\theta/2) - i\sin(\theta/2) & 0 \\ 0 & \cos(\theta/2) + i\sin(\theta/2) \end{bmatrix}
+```
 
+#### SX Gate
+The SX gate, also known as the sqrt(X) gate, performs a $\sqrt{X}$ operation, which is a half-way rotation around the X-axis on the Bloch sphere.
+```math
+SX = \begin{bmatrix} \frac{1+i}{2} & \frac{1-i}{2} \\ \frac{1-i}{2} & \frac{1+i}{2} \end{bmatrix}
+```
+#### P Gate
+The P gate, also known as the phase gate, applies a phase shift $\theta$ to the state of a qubit. It is not a global phase gate but specifically shifts the phase of the |1⟩ state.
+```math
+P(\theta) = \begin{bmatrix} 1 & 0 \\ 0 & \cos(\theta) + i\sin(\theta) \end{bmatrix}
+```
+#### U Gate 
+The U gate is a general unitary operation defined by three parameters: $\alpha$, $\beta$, and $\gamma$. It represents a comprehensive rotation in the Bloch sphere that can achieve any single qubit quantum gate.
+```math
+U(\alpha, \beta, \gamma) = \begin{bmatrix}
+\cos(\alpha/2) & -e^{i\gamma}\sin(\alpha/2) \\
+e^{i\beta}\sin(\alpha/2) & e^{i(\beta+\gamma)}\cos(\alpha/2)
+\end{bmatrix}
+U(\alpha, \beta, \gamma) = \begin{bmatrix}
+\cos(\alpha/2) & -(\cos(\gamma) + i\sin(\gamma))\sin(\alpha/2) \\
+(\cos(\beta) + i\sin(\beta))\sin(\alpha/2) & (\cos(\beta+\gamma) + i\sin(\beta+\gamma))\cos(\alpha/2)
+\end{bmatrix}
+```
 
 
 ## 2-qubit Gates
