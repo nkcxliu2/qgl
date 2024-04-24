@@ -73,10 +73,6 @@ P(\theta) = \begin{bmatrix} 1 & 0 \\ 0 & \cos(\theta) + i\sin(\theta) \end{bmatr
 The U gate is a general unitary operation defined by three parameters: $\alpha$, $\beta$, and $\gamma$. It represents a comprehensive rotation in the Bloch sphere that can achieve any single qubit quantum gate.
 ```math
 U(\alpha, \beta, \gamma) = \begin{bmatrix}
-\cos(\alpha/2) & -e^{i\gamma}\sin(\alpha/2) \\
-e^{i\beta}\sin(\alpha/2) & e^{i(\beta+\gamma)}\cos(\alpha/2)
-\end{bmatrix}
-U(\alpha, \beta, \gamma) = \begin{bmatrix}
 \cos(\alpha/2) & -(\cos(\gamma) + i\sin(\gamma))\sin(\alpha/2) \\
 (\cos(\beta) + i\sin(\beta))\sin(\alpha/2) & (\cos(\beta+\gamma) + i\sin(\beta+\gamma))\cos(\alpha/2)
 \end{bmatrix}
@@ -84,6 +80,116 @@ U(\alpha, \beta, \gamma) = \begin{bmatrix}
 
 
 ## 2-qubit Gates
+#### CX Gate
+The Controlled X gate, also known as CNOT, is used to apply an X gate to a target qubit when the control qubit is in the state |1⟩. This gate is essential for creating quantum entanglement and implementing conditional logic in quantum circuits.
+```math
+CX = \begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0
+\end{bmatrix}
+```
+#### CY Gate 
+The Controlled Y gate, applies a Y gate to a target qubit when the control qubit is set to |1⟩. It plays a crucial role in quantum circuits where conditional phase flips combined with bit flips are necessary.
+```math
+CY = \begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & -i \\
+0 & 0 & i & 0
+\end{bmatrix}
+```
+#### CZ Gate 
+The Controlled Z gate, applies a Z gate (Pauli-Z gate) to a target qubit when the control qubit is set to |1⟩. This gate is essential for phase manipulation in quantum algorithms and is widely used in creating quantum entanglement.
+```math
+CZ = \begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & -1
+\end{bmatrix}
+```
+#### CH Gate 
+The Controlled H gate, applies a Hadamard gate to a target qubit when the control qubit is set to |1⟩. It's used in complex quantum operations that require conditional superposition, serving as a critical component in algorithms that exploit quantum parallelism and entanglement.
+```math
+CH = \begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+0 & 0 & \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}
+\end{bmatrix}
+```
+#### CS Gate 
+The Controlled S gate, applies an S gate to a target qubit when the control qubit is set to |1⟩. The S gate applies a phase shift of $\pi/2$, making the CS gate vital for phase control in multi-qubit operations, particularly in algorithms requiring phase kickback or quantum Fourier transforms.
+```math
+CS = \begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & i
+\end{bmatrix}
+```
+#### CSDG Gate 
+The Controlled SDG gate, applies an SDG gate to a target qubit when the control qubit is set to |1⟩. The SDG gate applies a phase shift of $-\pi/2$, making the CSDG gate essential for precise phase control and corrections, especially those containing inverse phase adjustments.
+```math
+CSDG = \begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & -i
+\end{bmatrix}
+```
+#### CT Gate 
+The Controlled T gate, applies a T gate to a target qubit when the control qubit is set to |1⟩. The T gate introduces a phase shift of $\pi/4$, making the CT gate  useful in algorithms that require detailed phase control, such as QEC and certain QFT applications.
+```math
+CT = \begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & \frac{\sqrt{2}}{2} + i\frac{\sqrt{2}}{2}
+\end{bmatrix}
+```
+#### CTDG Gate
+The Controlled TDG gate, applies a TDG gate to a target qubit when the control qubit is set to |1⟩. The TDG gate introduces a phase shift of $-\pi/4$, which is essential for undoing phase operations in quantum algorithms, particularly in processes that reverse operations for error correction and algorithm symmetry.
+```math
+CTDG = \begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & \frac{\sqrt{2}}{2} - i\frac{\sqrt{2}}{2}
+\end{bmatrix}
+```
+#### CRX Gate
+The Controlled RX gate, applies an RX gate to a target qubit when the control qubit is set to |1⟩. The RX gate performs a rotation around the X axis by an angle $\alpha$.
+```math
+CRX(\alpha) = \begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & \cos(\alpha/2) & -i\sin(\alpha/2) \\
+0 & 0 & -i\sin(\alpha/2) & \cos(\alpha/2) 
+\end{bmatrix}
+```
+#### CRY Gate 
+The Controlled RY gate, applies an RY gate to a target qubit when the control qubit is set to |1⟩. The RY gate performs a rotation around the Y axis by an angle $\alpha$.
+```math
+CRY(\alpha) = \begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & \cos(\alpha/2) & -\sin(\alpha/2) \\
+0 & 0 & \sin(\alpha/2) & \cos(\alpha/2)
+\end{bmatrix}
+```
+#### CRZ Gate 
+The Controlled RZ gate, applies an RZ gate to a target qubit when the control qubit is set to |1⟩. The RZ gate performs a rotation around the Z axis by an angle $\alpha$.
+```math
+CRZ = \begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & \cos(\theta/2) - i\sin(\theta/2) & 0 \\
+0 & 0 & 0 & \cos(\theta/2) + i\sin(\theta/2)
+\end{bmatrix}
+```
 
 
 ## 3-qubit Gates
